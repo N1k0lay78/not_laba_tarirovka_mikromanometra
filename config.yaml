@@ -1,0 +1,13 @@
+document:
+  student: Фамилия И.О.
+  group: 1101
+  teacher: Фамилия И.О.
+  date_get: 11.09.2024
+  # https://www.highexpert.ru/content/gases/air.html
+  kinematic_viscosity_of_air: 1.56
+diameters:
+  # В мм (мм = 10^-3 м)
+  D1: 50
+  D2: 85
+  D3: 100
+  D4: 120
