@@ -62,8 +62,13 @@ def eval_mean_k():
     return round(sum(k) / len(k), 1)
 
 def save_image():
-    dp = eval_table()[2]
-    k =  eval_table()[-1]
+    data = []
+    for dp_i, k_i in zip(eval_table()[2], eval_table()[-1]):
+        data.append([dp_i, k_i])
+    data.sort(key=lambda el: el[0])
+    dp = list(map(lambda el: el[0], data))
+    k = list(map(lambda el: el[1], data))
+    # dp, k = eval_table()[2], eval_table()[-1]
     plt.plot(dp, k)
     plt.xlabel('Давление ')
     plt.ylabel('Тарировочный коэффициент')
