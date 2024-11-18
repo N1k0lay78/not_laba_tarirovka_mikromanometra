@@ -34,12 +34,16 @@ def eval_table():
     dp = []
     dh = []
     k =  []
-    for i in range(len(ql)):
-        dm.append(round(abs(ql[i] - qr[i]), 2))
-        dg.append(round(g * dm[i], 2))
-        dp.append(round(dg[i] / spr, 1))
-        dh.append(round(abs(hl[i] - hr[i])))
-        k.append(round(abs(dp[i] - dh[i]), 1))
+    for i in range(1, len(ql)):
+        # TODO  (ql[i] - ql[0]) - (qr[i] - qr[0])
+        dm.append(round((ql[i] - ql[0]) - (qr[i] - qr[0]), 3))
+        dg.append(round(g * dm[i - 1], 3))
+        # OK
+        dp.append(round(dg[i - 1] / spr, 5))
+        # TODO (Hl[i] - Hl[0]) - (Hr[i] - Hr[0])
+        dh.append(round((hl[i] - hl[0]) - (hr[i] - hr[0])))
+        print(round((ql[i] - ql[0]) - (qr[i] - qr[0]), 2), round(abs(dp[i - 1] / dh[i - 1]), 1))
+        k.append(round(abs(dp[i - 1] / dh[i - 1]), 2))
     return dm, dg, dp, hl, hr, dh, k
 
 
