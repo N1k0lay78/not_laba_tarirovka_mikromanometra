@@ -2,7 +2,7 @@ import yaml
 from math import pi
 
 def load_diameters():
-    with open('config.yaml') as f:
+    with open('config.yaml', encoding='utf-8') as f:
         data = yaml.safe_load(f)
     data = data["diameters"]
     return [data[f"D{i}"]*10**(-3) for i in range(1, 5)]

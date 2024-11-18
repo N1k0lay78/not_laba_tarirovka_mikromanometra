@@ -6,7 +6,7 @@ from eval_Spr import eval_Spr
 from laba import get_table, eval_mean_k, save_image
 
 def load_title_info():
-    with open('config.yaml') as f:
+    with open('config.yaml', encoding='utf-8') as f:
         data = yaml.safe_load(f)
     return data["document"]
 
