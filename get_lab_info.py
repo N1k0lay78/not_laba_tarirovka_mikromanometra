@@ -22,5 +22,5 @@ def get_lab_info(doc):
     info["mean_k"] = eval_mean_k()
     save_image()
     info["plot"] = InlineImage(doc, "plot.png")
-    info["scheme"] = InlineImage(doc, "scheme.png")
+    info["scheme"] = InlineImage(doc, "scheme.jpg")
     return info

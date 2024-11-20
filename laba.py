@@ -35,15 +35,11 @@ def eval_table():
     dh = []
     k =  []
     for i in range(1, len(ql)):
-        # TODO  (ql[i] - ql[0]) - (qr[i] - qr[0])
-        dm.append(round((ql[i] - ql[0]) - (qr[i] - qr[0]), 3))
+        dm.append(round(ql[i] - qr[i], 3))
         dg.append(round(g * dm[i - 1], 3))
-        # OK
         dp.append(round(dg[i - 1] / spr, 5))
-        # TODO (Hl[i] - Hl[0]) - (Hr[i] - Hr[0])
         dh.append(round((hl[i] - hl[0]) - (hr[i] - hr[0])))
-        print(round((ql[i] - ql[0]) - (qr[i] - qr[0]), 2), round(abs(dp[i - 1] / dh[i - 1]), 1))
-        k.append(round(abs(dp[i - 1] / dh[i - 1]), 2))
+        k.append(round((dp[i - 1] / dh[i - 1]), 2))
     return dm, dg, dp, hl, hr, dh, k
 
 
@@ -54,9 +50,6 @@ def get_table():
         table.append([i+1])
         for ii in range(len(rows)):
             table[-1].append(rows[ii][i])
-    
-    # for i in range(len(table)):
-    #     print(table[i])
 
     return table
 
@@ -72,10 +65,9 @@ def save_image():
     data.sort(key=lambda el: el[0])
     dp = list(map(lambda el: el[0], data))
     k = list(map(lambda el: el[1], data))
-    # dp, k = eval_table()[2], eval_table()[-1]
     plt.plot(dp, k)
-    plt.xlabel('Давление ')
-    plt.ylabel('Тарировочный коэффициент')
+    plt.xlabel('Давление, Па')
+    plt.ylabel('Тарировочный коэффициент, Па/мм')
     plt.title('Зависимость тарировочного коэффициента микроманометра от давления')
     plt.savefig('plot.png', bbox_inches='tight')
 
